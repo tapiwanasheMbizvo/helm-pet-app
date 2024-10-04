@@ -1,0 +1,5 @@
+appName: nice-app-helm
+
+replicas: 1
+
+containerName: nice-app-container

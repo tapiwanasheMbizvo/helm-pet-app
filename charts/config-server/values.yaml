@@ -1,0 +1,3 @@
+appName: config-server
+replicas: 1
+postgresSecret: postgres-db-secret

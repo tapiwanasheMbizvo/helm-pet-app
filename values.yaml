@@ -1,0 +1,3 @@
+appName: nginx
+replicaCount: 1
+configMap: nginx-config

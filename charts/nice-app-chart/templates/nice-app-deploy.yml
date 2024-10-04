@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.appName}}
+spec:
+  replicas: {{.Values.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.appName}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.appName}}
+    spec:
+      containers:
+      - name: {{.Values.containerName}}
+        image: tapiwanashembizvo/nice-app:18
+        ports:
+        - containerPort: 8778
+        resources:
+            requests:
+              memory: "50Mi" #memory is messured in Mi and Gi 
+              cpu: "150m" #1000m  = 1 cpu core 
+            
+            limits:
+              memory: "200Mi"
+              cpu: "500m"   

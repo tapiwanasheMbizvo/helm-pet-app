@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pet-backend
+  template:
+    metadata:
+      labels:
+        app: pet-backend
+    spec:
+      containers:
+      - name: pet-backend-container
+        image: tapiwanashembizvo/pet-backend:alpha
+        ports:
+        - containerPort: 8785
+        env:
+        - name:  CONFIG_SERVER_URL
+          valueFrom:
+            secretKeyRef:
+              name:  pet-app-secret
+              key:  CONFIG_SERVER_URL
+        resources:
+          requests:
+            memory: "50Mi" #memory is messured in Mi and Gi 
+            cpu: "150m" #1000m  = 1 cpu core 
+          
+          limits:
+            memory: "200Mi"
+            cpu: "500m"
+      
+    
